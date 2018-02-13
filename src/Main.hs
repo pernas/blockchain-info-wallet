@@ -85,7 +85,7 @@ readArguments = do
 
 main = do
     (guid, skey, pass) <- readArguments
-    response <- fetchWallet guid skey
+    response           <- fetchWallet guid skey
     let valM = do
             wrapper <- response ^? responseBody . key "payload" . _String
             decryptWrapper pass wrapper
