@@ -24,7 +24,7 @@ import           Foundation.Monad
 import           Network.Wreq
 import           System.Console.Haskeline
 
-url = "https://blockchain.info/"
+blockchain_url = "https://blockchain.info/"
 
 stretchPassword :: Int -> ByteString -> LString -> ByteString
 stretchPassword iterations salt password =
@@ -60,7 +60,7 @@ decryptWrapper password wrapper = do
 
 fetchWallet :: LString -> LString -> IO (Response LazyChar8.ByteString)
 fetchWallet guid skey = post
-    (url <> "wallet")
+    (blockchain_url <> "wallet")
     [ "method" := ("wallet.aes.json" :: LString)
     , "format" := ("json" :: LString)
     , "sharedKey" := skey
